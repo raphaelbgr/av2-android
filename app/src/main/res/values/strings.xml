@@ -17,4 +17,14 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment publications</string>
+    <string name="informacoes_pessoais_title">Informações pessoais</string>
+    <string name="text_name">Nome completo</string>
+    <string name="text_email">E-mail</string>
+    <string name="text_phone">Telefone</string>
+    <string name="text_address">Endereço</string>
+    <string name="text_street">Rua</string>
+    <string name="text_cep">CEP</string>
+    <string name="text_city">Cidade</string>
+    <string name="text_uf">UF</string>
+    <string name="text_save_button">Salvar dados</string>
 </resources>

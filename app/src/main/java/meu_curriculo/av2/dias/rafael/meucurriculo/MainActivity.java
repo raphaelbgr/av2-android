@@ -2,10 +2,10 @@ package meu_curriculo.av2.dias.rafael.meucurriculo;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -67,6 +69,15 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+        displaySelectedScreen(id);
+        return true;
+    }
+
     private void displaySelectedScreen(int id) {
         Fragment fragment = null;
 
@@ -96,12 +107,24 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        displaySelectedScreen(id);
-        return true;
+    private void searchCEP() {
+        // Get the search string from the input field.
+        EditText cepView = findViewById(R.id.edit_cep);
+        EditText streetView = findViewById(R.id.edit_street);
+        EditText cityView = findViewById(R.id.edit_city);
+        EditText ufView = findViewById(R.id.edit_uf);
+
+        String queryString = cepView.getText().toString();
+
+        // Check the status of the network connection.
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+
+        // If the network is active and the search field is not empty, start a FetchBook AsyncTask.
+        if (networkInfo != null && networkInfo.isConnected() && queryString.length()!=0) {
+            new CEPCrawler(streetView, cityView, ufView).execute(queryString);
+        }
     }
 }
+

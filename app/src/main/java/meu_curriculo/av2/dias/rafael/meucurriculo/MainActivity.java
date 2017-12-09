@@ -83,6 +83,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_courses:
                 fragment = new CoursesFragment();
                 break;
+            case R.id.nav_publications:
+                fragment = new PublicationsFragment();
+                break;
         }
         if(fragment != null) {
             FragmentTransaction ft = getFragmentManager().beginTransaction();

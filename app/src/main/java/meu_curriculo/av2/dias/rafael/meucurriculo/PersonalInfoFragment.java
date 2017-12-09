@@ -18,6 +18,7 @@ public class PersonalInfoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Informações pessoais");
     }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstance) {

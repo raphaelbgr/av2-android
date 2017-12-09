@@ -74,6 +74,12 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_personal_info:
                 fragment = new PersonalInfoFragment();
                 break;
+            case R.id.nav_degree:
+                fragment = new DegreeFragment();
+                break;
+            case R.id.nav_professional_experience:
+                fragment = new ProfessionalExperienceFragment();
+                break;
         }
         if(fragment != null) {
             FragmentTransaction ft = getFragmentManager().beginTransaction();

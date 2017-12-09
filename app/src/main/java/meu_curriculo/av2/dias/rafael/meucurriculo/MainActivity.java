@@ -80,6 +80,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_professional_experience:
                 fragment = new ProfessionalExperienceFragment();
                 break;
+            case R.id.nav_courses:
+                fragment = new CoursesFragment();
+                break;
         }
         if(fragment != null) {
             FragmentTransaction ft = getFragmentManager().beginTransaction();

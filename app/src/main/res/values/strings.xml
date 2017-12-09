@@ -11,4 +11,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment_professional_experience">Hello blank fragment from professional experience</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment_courses">Hello blank fragment from courses</string>
 </resources>

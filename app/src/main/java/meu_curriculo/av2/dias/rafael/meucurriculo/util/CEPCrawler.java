@@ -1,6 +1,7 @@
-package meu_curriculo.av2.dias.rafael.meucurriculo;
+package meu_curriculo.av2.dias.rafael.meucurriculo.util;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -36,7 +37,7 @@ public class CEPCrawler extends AsyncTask<String,Void,String>{
 
         // Get the search string
         String queryString = params[0];
-
+        Log.d("parâmetro", queryString);
 
         // Set up variables for the try block that need to be closed in the finally block.
         HttpURLConnection urlConnection = null;
@@ -52,6 +53,8 @@ public class CEPCrawler extends AsyncTask<String,Void,String>{
                     .appendQueryParameter("formato", "json")
                     .appendQueryParameter("cep", queryString)
                     .build();
+
+            Log.d("url", builtURI.toString());
 
             URL requestURL = new URL(builtURI.toString());
 
@@ -118,8 +121,8 @@ public class CEPCrawler extends AsyncTask<String,Void,String>{
         try {
             // Convert the response into a JSON object.
             JSONObject jsonObject = new JSONObject(s);
-            this.streetInput.setText(jsonObject.getString("logradouro"));
-
+            String logradouro = jsonObject.getString("logradouro");
+            streetInput.setText(logradouro);
         } catch (Exception e){
             e.printStackTrace();
         }

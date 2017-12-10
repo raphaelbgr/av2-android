@@ -1,4 +1,4 @@
-package meu_curriculo.av2.dias.rafael.meucurriculo;
+package meu_curriculo.av2.dias.rafael.meucurriculo.fragment;
 
 
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import meu_curriculo.av2.dias.rafael.meucurriculo.R;
 
 
 /**

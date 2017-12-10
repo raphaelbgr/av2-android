@@ -1,4 +1,4 @@
-package meu_curriculo.av2.dias.rafael.meucurriculo;
+package meu_curriculo.av2.dias.rafael.meucurriculo.activity;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -15,7 +15,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+
+import meu_curriculo.av2.dias.rafael.meucurriculo.fragment.CoursesFragment;
+import meu_curriculo.av2.dias.rafael.meucurriculo.fragment.DegreeFragment;
+import meu_curriculo.av2.dias.rafael.meucurriculo.fragment.PersonalInfoFragment;
+import meu_curriculo.av2.dias.rafael.meucurriculo.fragment.ProfessionalExperienceFragment;
+import meu_curriculo.av2.dias.rafael.meucurriculo.fragment.PublicationsFragment;
+import meu_curriculo.av2.dias.rafael.meucurriculo.R;
+import meu_curriculo.av2.dias.rafael.meucurriculo.util.CEPCrawler;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -105,26 +114,6 @@ public class MainActivity extends AppCompatActivity
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-    }
-
-    private void searchCEP() {
-        // Get the search string from the input field.
-        EditText cepView = findViewById(R.id.edit_cep);
-        EditText streetView = findViewById(R.id.edit_street);
-        EditText cityView = findViewById(R.id.edit_city);
-        EditText ufView = findViewById(R.id.edit_uf);
-
-        String queryString = cepView.getText().toString();
-
-        // Check the status of the network connection.
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-
-        // If the network is active and the search field is not empty, start a FetchBook AsyncTask.
-        if (networkInfo != null && networkInfo.isConnected() && queryString.length()!=0) {
-            new CEPCrawler(streetView, cityView, ufView).execute(queryString);
-        }
     }
 }
 

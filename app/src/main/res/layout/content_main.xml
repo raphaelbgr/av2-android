@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="meu_curriculo.av2.dias.rafael.meucurriculo.MainActivity"
+    tools:context="meu_curriculo.av2.dias.rafael.meucurriculo.activity.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
 </android.support.constraint.ConstraintLayout>

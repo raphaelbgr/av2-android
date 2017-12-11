@@ -7,9 +7,11 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import meu_curriculo.av2.dias.rafael.meucurriculo.R;
-
+import meu_curriculo.av2.dias.rafael.meucurriculo.dao.CurriculumDAO;
+import meu_curriculo.av2.dias.rafael.meucurriculo.model.Curriculum;
 
 
 public class ProfileFragment extends Fragment {
@@ -23,6 +25,11 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.profile, container, false);
+        View view = inflater.inflate(R.layout.profile, container, false);
+        CurriculumDAO dao = new CurriculumDAO(view.getContext());
+        Curriculum cv = dao.retornarUltimo();
+        TextView txView = view.findViewById(R.id.tx_name);
+        txView.setText(cv.getName());
+        return view;
     }
 }

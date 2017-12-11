@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -21,6 +22,7 @@ import meu_curriculo.av2.dias.rafael.meucurriculo.fragment.CoursesFragment;
 import meu_curriculo.av2.dias.rafael.meucurriculo.fragment.DegreeFragment;
 import meu_curriculo.av2.dias.rafael.meucurriculo.fragment.PersonalInfoFragment;
 import meu_curriculo.av2.dias.rafael.meucurriculo.fragment.ProfessionalExperienceFragment;
+import meu_curriculo.av2.dias.rafael.meucurriculo.fragment.ProfileFragment;
 import meu_curriculo.av2.dias.rafael.meucurriculo.fragment.PublicationsFragment;
 import meu_curriculo.av2.dias.rafael.meucurriculo.fragment.SettingsFragment;
 
@@ -45,9 +47,11 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        mAdView = (AdView) findViewById(R.id.adView);
+        mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
+        displaySelectedScreen(R.id.nav_profile);
 
     }
 
@@ -94,8 +98,10 @@ public class MainActivity extends AppCompatActivity
 
     private void displaySelectedScreen(int id) {
         Fragment fragment = null;
-
         switch (id){
+            case R.id.nav_profile:
+                fragment = new ProfileFragment();
+                break;
             case R.id.nav_personal_info:
                 fragment = new PersonalInfoFragment();
                 break;

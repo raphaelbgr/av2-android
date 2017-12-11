@@ -2,7 +2,12 @@ package meu_curriculo.av2.dias.rafael.meucurriculo.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import meu_curriculo.av2.dias.rafael.meucurriculo.model.Curriculum;
 import meu_curriculo.av2.dias.rafael.meucurriculo.model.DbGateway;
 
 /**
@@ -28,5 +33,22 @@ public class CurriculumDAO {
         cv.put("uf", uf);
 
         return gw.getDatabase().insert(TABLE_CLIENTES, null, cv) > 0;
+    }
+
+    public Curriculum retornarUltimo(){
+        Cursor cursor = gw.getDatabase().rawQuery("SELECT * FROM Perfis ORDER BY ID DESC",
+                null);
+        if(cursor.moveToFirst()){
+            String nome = cursor.getString(cursor.getColumnIndex("name"));
+            String email = cursor.getString(cursor.getColumnIndex("email"));
+            String phone = cursor.getString(cursor.getColumnIndex("phone"));
+            String cep = cursor.getString(cursor.getColumnIndex("cep"));
+            String street = cursor.getString(cursor.getColumnIndex("street"));
+            String city = cursor.getString(cursor.getColumnIndex("city"));
+            String uf = cursor.getString(cursor.getColumnIndex("uf"));
+            cursor.close();
+            return new Curriculum(nome, email, phone, cep, street, city, uf);
+        }
+        return null;
     }
 }

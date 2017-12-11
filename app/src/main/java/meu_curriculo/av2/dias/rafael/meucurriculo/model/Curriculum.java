@@ -15,6 +15,20 @@ public class Curriculum implements Serializable{
     private String city;
     private String uf;
 
+    public Curriculum() {
+
+    }
+
+    public Curriculum(String name, String email, String phone, String CEP, String street, String city, String uf) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.CEP = CEP;
+        this.street = street;
+        this.city = city;
+        this.uf = uf;
+    }
+
     public String getName() {
         return name;
     }

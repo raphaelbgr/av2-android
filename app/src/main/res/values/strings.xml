@@ -27,4 +27,17 @@
     <string name="text_city">Cidade</string>
     <string name="text_uf">UF</string>
     <string name="text_save_button">Salvar dados</string>
+    <string name="notification_ask">Aceito receber notificações</string>
+    <string name="preference_file_key">br.com.meu_curriculo_key</string>
+    <string name="degree">Graduação</string>
+    <string name="course">Curso</string>
+    <string name="conclusion">Conclusão do curso</string>
+    <string name="experience">Experiência</string>
+    <string name="company">Empresa</string>
+    <string name="courses">Cursos</string>
+    <string name="course_name">Nome do curso</string>
+    <string name="publications">Publicações</string>
+    <string name="titulo">Título</string>
+    <string name="description">Descrição</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 </resources>

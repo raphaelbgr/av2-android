@@ -2,9 +2,6 @@ package meu_curriculo.av2.dias.rafael.meucurriculo.activity;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,20 +11,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
+import meu_curriculo.av2.dias.rafael.meucurriculo.R;
 import meu_curriculo.av2.dias.rafael.meucurriculo.fragment.CoursesFragment;
 import meu_curriculo.av2.dias.rafael.meucurriculo.fragment.DegreeFragment;
 import meu_curriculo.av2.dias.rafael.meucurriculo.fragment.PersonalInfoFragment;
 import meu_curriculo.av2.dias.rafael.meucurriculo.fragment.ProfessionalExperienceFragment;
 import meu_curriculo.av2.dias.rafael.meucurriculo.fragment.PublicationsFragment;
-import meu_curriculo.av2.dias.rafael.meucurriculo.R;
-import meu_curriculo.av2.dias.rafael.meucurriculo.util.CEPCrawler;
+import meu_curriculo.av2.dias.rafael.meucurriculo.fragment.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
     }
 
     @Override
@@ -72,7 +77,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            displaySelectedScreen(R.id.action_settings);
         }
 
         return super.onOptionsItemSelected(item);
@@ -105,6 +110,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_publications:
                 fragment = new PublicationsFragment();
+                break;
+            case R.id.action_settings:
+                fragment = new SettingsFragment();
                 break;
         }
         if(fragment != null) {

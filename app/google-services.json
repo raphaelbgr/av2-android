@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "401459344463",
+    "firebase_url": "https://meucurriculo-48a67.firebaseio.com",
+    "project_id": "meucurriculo-48a67",
+    "storage_bucket": "meucurriculo-48a67.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401459344463:android:f3122143c26c631f",
+        "android_client_info": {
+          "package_name": "meu_curriculo.av2.dias.rafael.meucurriculo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401459344463-g1dqf8umonr31ounlqtgnl2hpbd82a7u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "meu_curriculo.av2.dias.rafael.meucurriculo",
+            "certificate_hash": "cd25b761f1ac3c13069a2b623b59baaca58e1678"
+          }
+        },
+        {
+          "client_id": "401459344463-a1h3qvupj70mv3dtvrj7caba1j5lc1ub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABPWhgbdW3PtHtPTpjKBrYU0dZjIKoFd8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401459344463-a1h3qvupj70mv3dtvrj7caba1j5lc1ub.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

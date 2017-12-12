@@ -29,7 +29,7 @@ public class ProfileFragment extends Fragment {
         CurriculumDAO dao = new CurriculumDAO(view.getContext());
         Curriculum cv = dao.retornarUltimo();
         TextView txView = view.findViewById(R.id.tx_name);
-        txView.setText(cv.getName());
+        txView.setText(cv != null ? cv.getName() : "");
         return view;
     }
 }

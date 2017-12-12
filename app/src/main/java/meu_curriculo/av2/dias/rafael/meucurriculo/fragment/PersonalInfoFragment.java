@@ -24,6 +24,8 @@ import meu_curriculo.av2.dias.rafael.meucurriculo.util.CEPCrawler;
 
 public class PersonalInfoFragment extends Fragment implements View.OnClickListener, View.OnFocusChangeListener{
 
+    private View fragmentView;
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
@@ -33,12 +35,12 @@ public class PersonalInfoFragment extends Fragment implements View.OnClickListen
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstance) {
-        View view = inflater.inflate(R.layout.personal_info, container, false);
-        Button b = (Button) view.findViewById(R.id.button_send);
+        fragmentView = inflater.inflate(R.layout.personal_info, container, false);
+        Button b = (Button) fragmentView.findViewById(R.id.button_send);
         b.setOnClickListener(this);
-        EditText editCep = view.findViewById(R.id.edit_cep);
+        EditText editCep = fragmentView.findViewById(R.id.edit_cep);
         editCep.setOnFocusChangeListener(this);
-        return view;
+        return fragmentView;
     }
 
     @Override
@@ -70,12 +72,12 @@ public class PersonalInfoFragment extends Fragment implements View.OnClickListen
     }
 
     @Override
-    public void onFocusChange(View view, boolean b) {
+    public void onFocusChange(View editTextView, boolean b) {
         // Get the search string from the input field.
-        EditText cepView = view.findViewById(R.id.edit_cep);
-        EditText streetView = view.findViewById(R.id.edit_street);
-        EditText cityView = view.findViewById(R.id.edit_city);
-        EditText ufView = view.findViewById(R.id.edit_uf);
+        EditText cepView = fragmentView.findViewById(R.id.edit_cep);
+        EditText streetView = fragmentView.findViewById(R.id.edit_street);
+        EditText cityView = fragmentView.findViewById(R.id.edit_city);
+        EditText ufView = fragmentView.findViewById(R.id.edit_uf);
 
         String queryString = cepView.getText().toString();
 

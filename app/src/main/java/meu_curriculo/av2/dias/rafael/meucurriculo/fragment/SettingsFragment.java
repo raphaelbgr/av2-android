@@ -19,6 +19,9 @@ import meu_curriculo.av2.dias.rafael.meucurriculo.R;
 
 public class SettingsFragment extends Fragment implements View.OnClickListener{
 
+    private CheckBox btnNotification;
+    private SharedPreferences sharedPref;
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
@@ -29,24 +32,20 @@ public class SettingsFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.settings, container, false);
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
         Boolean result = sharedPref.getBoolean(getString(R.string.notification_ask), false);
         Log.d("Resultado", result.toString());
-        CheckBox btnNotification = view.findViewById(R.id.btn_notification);
+        btnNotification = view.findViewById(R.id.btn_notification);
         btnNotification.setOnClickListener(this);
         btnNotification.setChecked(result);
+        setRetainInstance(true);
         return view;
     }
 
     @Override
     public void onClick(View view) {
-        Context context = getActivity();
-        CheckBox btnNotification = getActivity().findViewById(R.id.btn_notification);
-        SharedPreferences sharedPref = context.getSharedPreferences(
-                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putBoolean(getString(R.string.notification_ask), btnNotification.isChecked());
         editor.apply();
-
     }
 }
